@@ -45,7 +45,6 @@ object DependencyVersion {
 
 dependencies {
     /** spring starter */
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     kapt("org.springframework.boot:spring-boot-configuration-processor")
@@ -62,6 +61,7 @@ dependencies {
 
     /** swagger */
     implementation("io.springfox:springfox-boot-starter:${DependencyVersion.SWAGGER_VERSION}")
+    implementation("io.springfox:springfox-swagger-ui:${DependencyVersion.SWAGGER_VERSION}")
 
     /** logger */
     implementation("io.github.microutils:kotlin-logging-jvm:${DependencyVersion.KOTLIN_LOGGING_VERSION}")

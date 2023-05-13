@@ -12,8 +12,6 @@ import springfox.documentation.builders.PathSelectors
 import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
 import java.util.*
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
 
 /**
  * Swagger Config (v3)
@@ -29,8 +27,6 @@ class SwaggerConfig {
             .useDefaultResponseMessages(false)
             .ignoredParameterTypes(
                 WebSession::class.java,
-                HttpServletRequest::class.java,
-                HttpServletResponse::class.java,
                 ServerHttpRequest::class.java,
                 ServerHttpResponse::class.java,
                 ServerWebExchange::class.java

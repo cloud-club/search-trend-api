@@ -8,3 +8,8 @@ spring:
       matching-strategy: ant_path_matcher
 server:
   shutdown: graceful
+
+client:
+  search-trend:
+    google:
+      daily-trends-url: https://trends.google.co.kr
