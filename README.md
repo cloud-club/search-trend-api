@@ -5,7 +5,7 @@
 ### Spec
 
 - springboot
-- web-mvc (webflux 변경 가능)
+- webflux with coroutine
 - kotlin
 
 ### Mvp-1
