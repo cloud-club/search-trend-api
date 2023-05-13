@@ -1,6 +1,5 @@
 package com.cloudclub.searchtrend.common.async
 
-import mu.KotlinLogging
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 
 /**
@@ -16,7 +15,7 @@ class ExecutorGenerator(
     private val maxPoolSize: Int = DEFAULT_EXECUTOR_MAX_POOL_SIZE,
     private val queueCapacity: Int = DEFAULT_EXECUTOR_QUEUE_CAPACITY
 ) {
-    private val logger = KotlinLogging.logger {}
+    private val logger = mu.KotlinLogging.logger {}
 
     companion object {
         const val DEFAULT_EXECUTOR_CORE_POOL_SIZE = 5
