@@ -15,3 +15,7 @@
 ### Mvp-2
 
 > 검색어 기반, 뉴스 블로그 등의 2차 가공 데이터를 가져옴
+
+### Swagger
+
+> http://localhost:8080/swagger-ui/index.html
