@@ -4,8 +4,8 @@ import com.cloudclub.searchtrend.client.google.GoogleClient
 import org.springframework.stereotype.Service
 
 @Service
-class GoogleSearchTrendService(
+class SearchTrendService(
     private val googleClient: GoogleClient
 ) {
-    suspend fun getSearchTrend() = googleClient.getDailyTrends()
+    suspend fun getGoogleSearchTrend() = googleClient.getDailyTrends()
 }
