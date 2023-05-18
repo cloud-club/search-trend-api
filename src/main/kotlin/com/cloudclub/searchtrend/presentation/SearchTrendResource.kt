@@ -15,6 +15,10 @@ class SearchTrendResource(
     private val searchTrendService: SearchTrendService
 ) {
     @Operation(method = "Google Search Trend")
-    @GetMapping("/google-trends")
-    suspend fun getGoogleSearchTrend() = searchTrendService.getGoogleSearchTrend().wrapOk()
+    @GetMapping("/google/daily-trends")
+    suspend fun getGoogleDailySearchTrend() = searchTrendService.getGoogleDailySearchTrend().wrapOk()
+
+    @Operation(method = "Google Search Trend")
+    @GetMapping("/google/real-time-trends")
+    suspend fun getGoogleRealTimeSearchTrend() = searchTrendService.getGoogleRealTimeSearchTrend().wrapOk()
 }

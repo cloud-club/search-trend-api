@@ -1,6 +1,6 @@
-package com.cloudclub.searchtrend.client.google
+package com.cloudclub.searchtrend.client.google.model
 
-data class GoogleSearchTrendModel(
+data class GoogleDailySearchTrendModel(
     val default: DefaultResponse
 )
 
@@ -32,20 +32,5 @@ data class TrendingSearchInfo(
     data class RelatedQueries(
         val query: String,
         val exploreLink: String
-    )
-
-    data class Image(
-        val newsUrl: String,
-        val source: String,
-        val imageUrl: String
-    )
-
-    data class Article(
-        val title: String,
-        val timeAgo: String,
-        val source: String,
-        val image: Image?,
-        val url: String,
-        val snippet: String
     )
 }

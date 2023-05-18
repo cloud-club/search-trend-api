@@ -7,5 +7,7 @@ import org.springframework.stereotype.Service
 class SearchTrendService(
     private val googleClient: GoogleClient
 ) {
-    suspend fun getGoogleSearchTrend() = googleClient.getDailyTrends()
+    suspend fun getGoogleDailySearchTrend() = googleClient.getDailyTrends()
+
+    suspend fun getGoogleRealTimeSearchTrend() = googleClient.getRealTimeTrends()
 }

@@ -15,9 +15,9 @@ class GoogleClientConfig(
     fun googleClient(): GoogleClient {
         val webClient = WebClientFactory.generate(
             baseUrl = googleClientProperties.dailyTrendsUrl,
-            connectionTimeoutMillis = 1500,
-            readTimeoutMillis = 1500,
-            writeTimeoutMillis = 1500
+            connectionTimeoutMillis = 5000,
+            readTimeoutMillis = 5000,
+            writeTimeoutMillis = 5000
         )
 
         return ReactiveGoogleClient(webClient)
