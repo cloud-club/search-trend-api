@@ -3,12 +3,26 @@ package com.cloudclub.searchtrend.client.google.model
 data class GoogleRealTimeSearchTrendModel(
     val featuredStoryIds: List<String>,
     val trendingStoryIds: List<String>,
-    val storySummaries: Any,
+    val storySummaries: StorySummary,
     val date: String,
     val hideAllImages: Boolean
 ) {
+    data class Article(
+        val articleTitle: String,
+        val url: String,
+        val source: String,
+        val time: String,
+        val snippet: String
+    )
+
+    data class Image(
+        val newsUrl: String,
+        val source: String,
+        val imgUrl: String
+    )
+
     data class StorySummary(
-        val featuredStories: Map<String, Any>,
+        val featuredStories: List<Any>,
         val trendingStories: List<TrendingStory>
     )
 
@@ -22,3 +36,4 @@ data class GoogleRealTimeSearchTrendModel(
         val entityNames: List<String>
     )
 }
+

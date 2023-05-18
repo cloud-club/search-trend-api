@@ -10,6 +10,8 @@ import org.springframework.web.reactive.function.client.awaitBody
 class ReactiveGoogleClient(
     private val webClient: WebClient
 ) : GoogleClient {
+    private val logger = mu.KotlinLogging.logger {}
+
     override suspend fun getDailyTrends(): GoogleDailySearchTrendModel {
         val response = webClient.get()
             .uri("/trends/api/dailytrends") { builder ->
@@ -57,6 +59,7 @@ class ReactiveGoogleClient(
         return runCatching {
             mapper.readValue<GoogleRealTimeSearchTrendModel>(response)
         }.getOrElse {
+            logger.error { it.message }
             throw RuntimeException("fail to get Google RealTime Trend Search Response")
         }
     }
