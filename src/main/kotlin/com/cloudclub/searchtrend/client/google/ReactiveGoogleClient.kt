@@ -29,11 +29,7 @@ class ReactiveGoogleClient(
             .trimIndent()
             .substringAfter("\n")
 
-        return runCatching {
-            mapper.readValue<GoogleDailySearchTrendModel>(response)
-        }.getOrElse {
-            throw RuntimeException("fail to get Google Daily Trend Search Response")
-        }
+        return mapperGoogleResponseModel(response)
     }
 
     override suspend fun getRealTimeTrends(): GoogleRealTimeSearchTrendModel {
@@ -56,11 +52,33 @@ class ReactiveGoogleClient(
             .trimIndent()
             .substringAfter("\n")
 
+        return mapperGoogleResponseModel(response)
+    }
+
+    override suspend fun getReadTimeTrendsDetail(ids: Set<String>): GoogleRealTimeSearchTrendModel.StorySummary {
+        val response = webClient.get()
+            .uri("/trends/api/stories/summary") { builder ->
+                builder
+                    .queryParam("hl", "ko")
+                    .queryParam("tz", -540)
+                    .queryParam("cat", "all")
+                    .queryParam("id", ids)
+                    .build()
+            }
+            .retrieve()
+            .awaitBody<String>()
+            .trimIndent()
+            .substringAfter("\n")
+
+        return mapperGoogleResponseModel(response)
+    }
+
+    private inline fun <reified T> mapperGoogleResponseModel(response: String): T {
         return runCatching {
-            mapper.readValue<GoogleRealTimeSearchTrendModel>(response)
-        }.getOrElse {
-            logger.error { it.message }
-            throw RuntimeException("fail to get Google RealTime Trend Search Response")
+            mapper.readValue<T>(response)
+        }.getOrElse { e ->
+            logger.error { "fail to mapping / ${e.message}" }
+            throw RuntimeException()
         }
     }
 }

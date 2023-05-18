@@ -10,4 +10,6 @@ class SearchTrendService(
     suspend fun getGoogleDailySearchTrend() = googleClient.getDailyTrends()
 
     suspend fun getGoogleRealTimeSearchTrend() = googleClient.getRealTimeTrends()
+
+    suspend fun getGoogleRealTimeSearchTrendDetail(ids: Set<String>) = googleClient.getReadTimeTrendsDetail(ids)
 }

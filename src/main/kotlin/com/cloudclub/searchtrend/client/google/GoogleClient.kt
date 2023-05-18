@@ -7,4 +7,6 @@ interface GoogleClient {
     suspend fun getDailyTrends(): GoogleDailySearchTrendModel
 
     suspend fun getRealTimeTrends(): GoogleRealTimeSearchTrendModel
+
+    suspend fun getReadTimeTrendsDetail(ids: Set<String>): GoogleRealTimeSearchTrendModel.StorySummary
 }
