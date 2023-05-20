@@ -48,14 +48,4 @@ data class TrendingSearchInfo(
         val source: String,
         val imageUrl: String
     )
-
-    data class TrendingStory(
-        val image: Image,
-        val shareUrl: String,
-        val articles: List<Article>,
-        val idsForDedup: List<String>,
-        val id: String,
-        val title: String,
-        val entityNames: List<String>
-    )
 }
