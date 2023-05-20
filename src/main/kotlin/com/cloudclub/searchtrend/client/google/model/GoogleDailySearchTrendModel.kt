@@ -49,11 +49,6 @@ data class TrendingSearchInfo(
         val imageUrl: String
     )
 
-    data class StorySummary(
-        val featuredStories: List<Any>,
-        val trendingStories: List<TrendingStory>
-    )
-
     data class TrendingStory(
         val image: Image,
         val shareUrl: String,
