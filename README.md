@@ -8,17 +8,24 @@
 - webflux with coroutine
 - kotlin
 
-### Mvp-1
-
-> 구글, 네이버, 다음의 실시간 인기 검색어 정보를 가져옴
-
-### Mvp-2
-
-> 검색어 기반, 뉴스 블로그 등의 2차 가공 데이터를 가져옴
-
 ### Swagger
 
 > http://localhost:8080/swagger-ui/index.html
+
+### Google Client
+
+```kotlin
+interface GoogleClient {
+    /** 일간 검색 트랜드 */
+    suspend fun getDailyTrends(): GoogleDailySearchTrendModel
+
+    /** 실시간 검색 트랜드 */
+    suspend fun getRealTimeTrends(): GoogleRealTimeSearchTrendModel
+
+    /** 실시간 검색 트랜드 상세 정보 */
+    suspend fun getReadTimeTrendsDetail(ids: Set<String>): GoogleRealTimeSearchTrendModel.StorySummary
+}
+```
 
 ### Reference 
 
