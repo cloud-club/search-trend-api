@@ -13,14 +13,12 @@ class GoogleClientConfig(
 ) {
     @Bean
     fun googleClient(): GoogleClient {
-        val webClient = WebClientFactory.generate(
+        return WebClientFactory.generate(
             baseUrl = googleClientProperties.dailyTrendsUrl,
             connectionTimeoutMillis = 5000,
             readTimeoutMillis = 5000,
             writeTimeoutMillis = 5000
-        )
-
-        return ReactiveGoogleClient(webClient)
+        ).run { SuspendableGoogleClient(this) }
     }
 }
 
