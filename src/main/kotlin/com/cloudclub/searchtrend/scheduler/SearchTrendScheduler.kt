@@ -8,12 +8,12 @@ class SearchTrendScheduler(
     private val schedulerJob: SearchTrendJob
 ) {
     @Scheduled(cron = "0 0/30 * * * *")
-    suspend fun runCollectDailySearchTrendJob() {
+    fun runCollectDailySearchTrendJob() {
         schedulerJob.collectDailySearchTrendJob()
     }
 
     @Scheduled(cron = "0 0/15 * * * *")
-    suspend fun runCollectRealTimeSearchTrendJob() {
+    fun runCollectRealTimeSearchTrendJob() {
         schedulerJob.collectRealTimeSearchTrendJob()
     }
 }

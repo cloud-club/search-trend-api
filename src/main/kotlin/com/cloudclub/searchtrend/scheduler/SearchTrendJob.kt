@@ -1,7 +1,9 @@
 package com.cloudclub.searchtrend.scheduler
 
 import com.cloudclub.searchtrend.client.google.GoogleClient
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.springframework.stereotype.Component
@@ -12,18 +14,26 @@ class SearchTrendJob(
 ) {
     private val logger = KotlinLogging.logger { }
 
-    suspend fun collectDailySearchTrendJob() {
-        withContext(Dispatchers.IO) {
-            googleClient.getDailyTrends()
-        }
+    fun collectDailySearchTrendJob() {
+        CoroutineScope(Dispatchers.IO).launch {
+            runCatching {
+                googleClient.getDailyTrends()
+            }.onFailure { e ->
+                logger.error("collectDailySearchTrendJob error", e)
+            }
 
-        logger.info { "collectDailySearchTrendJob finish" }
+            logger.info { "collectDailySearchTrendJob finish" }
+        }
     }
 
-    suspend fun collectRealTimeSearchTrendJob() {
-        withContext(Dispatchers.IO) {
-            googleClient.getRealTimeTrends()
+    fun collectRealTimeSearchTrendJob() {
+        CoroutineScope(Dispatchers.IO).launch {
+            runCatching {
+                googleClient.getRealTimeTrends()
+            }.onFailure { e ->
+                logger.error("collectRealTimeSearchTrendJob error", e)
+            }
+            logger.info { "collectRealTimeSearchTrendJob finish" }
         }
-        logger.info { "collectRealTimeSearchTrendJob finish" }
     }
 }
